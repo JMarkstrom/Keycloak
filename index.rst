@@ -1,8 +1,8 @@
-.. Updated by Jonas Markström on September 15, 2021
+.. Updated by Jonas Markström on December 16, 2021
 
-=========================
-Windows Logon Agent (WLA)
-=========================
+======================================
+How to demo the SafeNet Keycloak agent
+======================================
 
 .. toctree::
    :hidden:
@@ -17,7 +17,7 @@ Windows Logon Agent (WLA)
 Overview
 ********
 
-This documents serves as a *compliment* to official product documentation and details deployment and configuration tasks relating to the Windows Login Agent (WLA). Specifically, this document outlines the various command line switches, their properties, values and descriptions for usage with either interactive, silent, local as well as remote installation.
+This documents serves as a how-to for setting up Keycloak Server and extending it with the SafeNet integration for SafeNet Authentication Service (SAS) and SafeNet Trusted Access (STA). The guide is intended to be used to simplify configuration and reduce "time to market" when creating either a demo or test. The instructions in this document must not be used towards setting up a production system.
 
 
 Installation
@@ -54,165 +54,6 @@ WLA command line switches
 -------------------------
 
 The following table outlines :abbr:`WLA (Windows Logon Agent)` specific properties with possible values as well as their explanation (relating mostly to the GUI based options). The wording used here does not match the actual GUI options.
-
-+--------------------------+--------+----------------------------------------------------------+
-|MSI switch/key            |Value(s)|Explanation                                               |
-+==========================+========+==========================================================+
-|COMPANYNAME               |string  | Company name (any).                                      |
-+--------------------------+--------+----------------------------------------------------------+
-|TOKENVALIDATORLOCATION    |FQDN    | Defines primary authentication server                    |
-+--------------------------+--------+----------------------------------------------------------+
-|TOKENVALIDATORLOCATION2   |FQDN    || Defines secondary authentication server                 |
-|                          |        ||                                                         |
-|                          |        || Note: set the value to *primary* for STA                |
-+--------------------------+--------+----------------------------------------------------------+
-|USEFAILOVER               |1 (0)   || **1** = failover enabled                                |
-|                          |        || **0** = no failover                                     |
-|                          |        ||                                                         |
-|                          |        || Note: this option **must** be used with key             |
-|                          |        || *TOKENVALIDATORLOCATION2*                               |
-+--------------------------+--------+----------------------------------------------------------+
-|USESSL                    |s       || **s** = toggles use of SSL (requires certificates)      |
-|                          |        || for primary server                                      |
-+--------------------------+--------+----------------------------------------------------------+
-|USESSL2                   |s       || **s** = toggles use of SSL (requires certificates)      |
-|                          |        || for secondary server                                    |
-+--------------------------+--------+----------------------------------------------------------+
-|LOGONMODE                 |1 (0)   || **1** = Windows password is hidden (cached)             |
-|                          |        || **0** = Windows password and MFA is required            |
-+--------------------------+--------+----------------------------------------------------------+
-|EXEMPTADMINS              |1 (0)   || **1** = Exempts administrators from using MFA           |
-|                          |        || **0** = Everybody must use MFA                          |
-+--------------------------+--------+----------------------------------------------------------+
-|USEGRID                   |1 (0)   || **1** = GRIDSure is enabled                             |
-|                          |        || **0** = GRIDSure is disabled                            |
-+--------------------------+--------+----------------------------------------------------------+
-|RDPWITHOUTOTP             |1 (0)   || **1** = Allows outgoing RDP connection without OTP      |
-|                          |        || **0** = Outgoing RDP is subject to OTP                  |
-+--------------------------+--------+----------------------------------------------------------+
-|JSONFILEPATH              |string  || Path to file                                            |
-|                          |        ||                                                         |
-+--------------------------+--------+----------------------------------------------------------+
-
-.. attention::
-   Note that examining the MSI package with logging you will find additional keys/switches that are non-functional, possibly deprecated by Engineering. These include, but are not limited to :code:`EXEMPTADMINSCHECK`, :code:`EXEMPTADMINSCHECK1`, :code:`KEYFILEPATH`, :code:`KEYFILE` and :code:`USEGRIDCHECK`.
-
-Generic MSI command line switches
----------------------------------
-
-The following table outlines :abbr:`MSI (Microsoft Installer)` switches that can be useful when installing WLA.
-
-+----------------+--------------+------------------------------------------------------------+
-|MSI switch/key  |Value(s)      |Explanation                                                 |
-+================+==============+============================================================+
-| /i             |              | Basic install switch when run from command line            |
-+----------------+--------------+------------------------------------------------------------+
-| /quiet         |              | Installs package in silent mode (e.g. in background)       |
-+----------------+--------------+------------------------------------------------------------+
-| /passive       |              || Installer displays a progress bar to the user indicating  |
-|                |              || an ongoing (silent) installation                          |
-+----------------+--------------+------------------------------------------------------------+
-| /log           | /L*V         | Creates an installation log file                           |
-+----------------+--------------+------------------------------------------------------------+
-| REBOOT         |ReallySupress || By default when running in silent mode the computer will  |
-|                |              || automatically reboot on installation completion. To avoid |
-|                |              || this behavior you can use REBOOT=ReallySupress instead.   |
-|                |              || In this case the installation will complete on the next   |
-|                |              || user initiated reboot                                     |
-+----------------+--------------+------------------------------------------------------------+
-
-Interactive installation
-========================
-
-For user controlled interactive installation, please refer to official product documentation.
-
-.. attention::
-   Make sure you always install from the MSI package unless there is a real compelling reason to use the :file:`.exe` file.
-
-
-Group Policy based Configuration & Installation
-===============================================
-
-The use of Microsoft Group Policy or Group Policy Objects (GPO) enables the SafeNet administrator to centrally manage the Windows Logon Agent (WLA) configuration for users and computers in an Active Directory environment.
-For more information about GPO, please refer to `Group Policy Overview <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831791(v=ws.11)>`_
-
-Creating a Group Policy Object
-------------------------------
-
-An MSI package is deployed (distributed) through GPO. To create an object, you need to perform the below steps:
-
-#. To open **Group Policy Management**, in the **Run** menu enter *gpmc.msc* and click :guilabel:`OK`
-#. Expand **Forest** (your forest) --> **Domains** (your domain)
-#. Right-click the **Group Policy Objects** and select :guilabel:`New`
-#. Enter a name for your policy and leave **Source Starter GPO** as *none*
-#. Right-click the domain name and select :guilabel:`Link an Existing GPO…`
-#. In **Select GPO** pop up, select newly created GPO and click :guilabel:`OK`
-#. Click the newly created GPO. In the right pane, right-click the linked domain name and select :guilabel:`enforce`
-
-.. note:: Performing the above steps will create and enforce a new GPO, and will link it with the domain
-
-Configuring ADMX and ADML Settings
-----------------------------------
-
-The SafeNet Windows Logon Agent policy settings are stored in a **Windows Administrative Template (ADMX)** file. The settings can be edited using Windows tools. The settings can be propagated to the entire domain, or be applied to the local computer and domain controllers only.
-
-To configure settings:
-
-#. Add ADMX and ADML file to Group Policy Object (GPO) Editor
-#. Configure ADMX and ADML settings using GPO Editor
-
-Adding ADMX and ADML Files to Group Policy Object Editor
---------------------------------------------------------
-
-#. Copy the Local Group Policy definition (C:\\Windows\\PolicyDefinitions) to the Domain Group Policy location (C:\\Windows\\SYSVOL\\sysvol\\<domain_name>\\Policies).
-#. Copy the ADMX file (:code:`<Application_name>_AgentConfig_<Date>.admx`) from Agent Installation Package, to the following location on your domain controller/server:
-
-   ::
-
-     C:\Windows\SYSVOL\sysvol\<domain_name>\Policies\PolicyDefinitions
-
-#. Copy the appropriate ADML language file (:code:`<Application_name>_AgentConfig_<Date>.adml`) to the language folder in the :code:`\PolicyDefinitions` folders.
-
-For example:
-
-  • In Windows 8/10, the English language file provided should be copied to: :code:`C:\Windows\SYSVOL\sysvol\<domain_name>\Policies\PolicyDefinitions\en-US`
-
-Configuring ADMX and ADML Settings
-----------------------------------
-
-After the Administrative Template has been added, you can open the template to configure the settings
-
-**To open the SafeNet Windows Logon Agent settings:**
-
-#. Open the Windows **Run** menu and type in :code:`gpmc.msc`
-#. Click :guilabel:`OK`
-#. The **Group Policy Management** windows opens
-
-   .. thumbnail:: /images/wla/gpmc.png
-      :width: 80%
-      :title: Figure: Determining target scope of policy.
-      :show_caption: true
-
-#. Complete one of the following actions:
-
-   .. tabs::
-
-      .. tab:: Propagate settings to clients
-
-         Right-click **Default Domain Policy** or **newly created GPO** under the domain node.
-
-      .. tab:: Propagate settings to Domain Controllers
-
-         Navigate to the **Domain Controllers** node and right-click **Default Domain Controllers Policy**
-
-#. From the dropdown menu, select :guilabel:`Edit...`. The **Group Policy Management Editor** window opens
-#. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane:
-
-   .. thumbnail:: /images/wla/wla_policies.png
-      :width: 80%
-      :title: Figure: WLA policy settings via GPO.
-      :show_caption: true
-
 #. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
 #. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
 
