@@ -6,13 +6,12 @@ _These instructions provides detailed step-by-step guidance on setting up the Sa
 ## Prerequisites
 The following prerequisites must be met to successfully follow these instructions:
 
-- Ubuntu 20.x
-  - Networking (_duh!_)
+- Ubuntu 20.04 (_Example_ Azure Product ID: `0001-com-ubuntu-server-focal`)
   - DNS (FQDN resolvable)
-  - FW rules
+  - FW/networking rules:
     - 22 (SSH)
     - 443 (SSL/TLS)
-    - (80 -disable later) 
+    - (80) 
 
 
 ## Certificate generation with Letsencrypt
