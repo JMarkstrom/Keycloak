@@ -84,6 +84,25 @@ _As a final step to Docker installation/configuration we install Docker Compose_
 
 > 🥈 You now have a **working Docker setup**. Next we do the magics!
 
+## Keycloak server pre-configuration
+
+In my example the following file structure is used:
+
+```
+├── keycloak.yml
+├── dockerfile
+├── certs
+│   └── fullchain.pem
+│   └── privkey.pem
+├── safeNet
+    ├── SafeNetOtpRealm.json
+    └── sas-login-ui
+        └── login
+            └── [...]
+```
+
+
+
 ## Deploying the Keycloak Server
 
 Run Docker with Keycloak: `sudo docker-compose -f keycloak.yml up`
