@@ -86,8 +86,11 @@ _As a final step to Docker installation/configuration we install Docker Compose_
 > 🥈 You now have a **working Docker setup**. Next we do the magics!
 
 ## Keycloak server pre-configuration
+At this point certificates have been generated and Docker (all) have been installed and verified. Next, the certificate files and any additional configuration like the SafeNet theme or your own theme as well as any plugin/module needs to be moved or kept at path(s) where they can be consumed when running the solution.
 
-In my example the following file structure is used:
+Here is an example file structure (as used in the provided Docker compose file shared with this repository).
+
+> ⚠ The Lets Encrypt are _not_ converted to `.crt`!
 
 ```
 ├── keycloak.yml
