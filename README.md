@@ -115,7 +115,9 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
         - "KEYCLOAK_HOSTNAME=fqdn"
         - "KEYCLOAK_DEFAULT_THEME=sas-login-ui"
 
+![image](https://user-images.githubusercontent.com/57787248/146521524-4f3862c1-96ea-4e27-b21c-aaa4bbc01bcd.png)
 
+![image](https://user-images.githubusercontent.com/57787248/146521326-f0153113-da16-4539-90a8-62ac3d70cf91.png)
 
 
 > 🥇 Awesome and **we are done**!
