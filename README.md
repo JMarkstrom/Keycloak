@@ -1,4 +1,4 @@
-# HOWTO deploy the SafeNet Agent for Keycloak in just 10 minutes
+# Deploying Keycloak with SSL in just 10 minutes!
 _These instructions provides detailed step-by-step guidance on setting up the SafeNet Keycloak Agent with Keycloak server for use with SafeNet Authentication Service (SAS) and/or SafeNet Trusted Access (STA). The guide is intended to be used to simplify configuration and reduce "time to market" when creating either a demo or test._
 
 > :warning: **The instructions in this document must not be used towards setting up a production system!**
