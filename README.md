@@ -88,7 +88,7 @@ _As a final step to Docker installation/configuration we install Docker Compose_
 ## Keycloak server pre-configuration
 At this point certificates have been generated and Docker (all) have been installed and verified. Next, the certificate files and any additional configuration like the SafeNet theme or your own theme as well as any plugin/module needs to be moved or kept at path(s) where they can be consumed when running the solution.
 
-Here is an example file structure (as used in the provided Docker compose file shared with this repository) showing location of certificate (`fullchain.pem`), key (`privkey.pem`), a custom module (`SafeNetOtpRealm.json`) and a custom theme (`sas-login-ui`)
+Here is an example file structure (as used in the provided **Docker Compose** file [file](https://raw.githubusercontent.com/JMarkstrom/SafeNet-Keycloak-Agent/main/files/keycloak.yml) shared with this repository) showing location of certificate (`fullchain.pem`), key (`privkey.pem`), a custom module (`SafeNetOtpRealm.json`) and a custom theme (`sas-login-ui`)
 
 > :warning: **The Lets Encrypt are not to be renamed or converted to** `.crt`**!**
 
@@ -104,12 +104,8 @@ Here is an example file structure (as used in the provided Docker compose file s
         └── login
             └── [...]
 ```
-Here (below as well as in the link) is an example **Dockerfile** [file](https://raw.githubusercontent.com/JMarkstrom/SafeNet-Keycloak-Agent/main/files/dockerfile):
 
-    FROM quay.io/keycloak/keycloak:latest
-
-
-Here (below as well as in the link) is an example **Docker Compose** file [file](https://raw.githubusercontent.com/JMarkstrom/SafeNet-Keycloak-Agent/main/files/keycloak.yml):
+Here is an example **Docker Compose** file:
 
     version: '3.7'
 
@@ -138,6 +134,9 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
         - "KEYCLOAK_HOSTNAME=fqdn"
         - "KEYCLOAK_DEFAULT_THEME=sas-login-ui"
 
+Lastly, here is a sample **Dockerfile**:
+
+    FROM quay.io/keycloak/keycloak:latest
 
 
 ## Deploying the Keycloak Server
