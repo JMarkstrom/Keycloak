@@ -101,15 +101,6 @@ In my example the following file structure is used:
         └── login
             └── [...]
 ```
-
-
-
-## Deploying the Keycloak Server
-
-Run Docker with Keycloak: `sudo docker-compose -f keycloak.yml up`
-
-
-
 Here (below as well as in the link) is an example **Dockerfile** [file](https://raw.githubusercontent.com/JMarkstrom/SafeNet-Keycloak-Agent/main/files/dockerfile):
 
     FROM quay.io/keycloak/keycloak:latest
@@ -143,6 +134,15 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
         - AUTH_PROFILE=basicAuth
         - "KEYCLOAK_HOSTNAME=fqdn"
         - "KEYCLOAK_DEFAULT_THEME=sas-login-ui"
+
+
+
+## Deploying the Keycloak Server
+At this point, assuming all the files are in the requisite directories _and_ adequate permissions are set you are now ready to standup the service!
+
+Run Docker with Keycloak: `sudo docker-compose -f keycloak.yml up`
+
+
 
 # Testing the solution
 To verify everything is working, open a browser and navigate to your keycloak host using `https://` e.g. `https://keycloak.swedemo.tk`
