@@ -1,0 +1,5 @@
+sphinxcontrib-images
+sphinx-copybutton==0.3.1
+sphinx-rtd-theme==0.5.1
+sphinx-tabs
+sphinxext.adaptive-youtube
