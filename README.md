@@ -9,11 +9,10 @@ _In addition detailed step-by-step instructions are also provided for integratin
   * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
   * [Certificate generation with Lets Encrypt](https://github.com/JMarkstrom/Keycloak#certificate-generation-with-letsencrypt)
   * [Install & Configure Docker](https://github.com/JMarkstrom/Keycloak#install--configure-docker)
-  * 
-  * [Deploying the Keycloak Server](https://github.com/JMarkstrom/Keycloak#prerequisites)
-  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
-  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
-  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
+  * [Deploying the Keycloak Server](https://github.com/JMarkstrom/Keycloak#deploying-the-keycloak-server)
+  * [Testing the solution](https://github.com/JMarkstrom/Keycloak#testing-the-solution)
+  * [Appendix](https://github.com/JMarkstrom/Keycloak#appendix)
+
 
 ## Prerequisites
 The following prerequisites must be met to successfully follow these instructions:
