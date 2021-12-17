@@ -20,7 +20,7 @@ services:
        - "KEYCLOAK_IMPORT:/tmp/SafeNetOtpRealm.json" # This is the SafeNet KeyCloak agent configuration from mounted volume
        - JAVA_OPTS_APPEND="-D keycloak.profile.feature.upload_script=enabled"
        - KEYCLOAK_USER=admin
-       - "KEYCLOAK_PASSWORD=Adstan605" # Change the password buddy!
+       - "KEYCLOAK_PASSWORD=password" # Change the password buddy!
        - AUTH_PROFILE=basicAuth
        - "KEYCLOAK_HOSTNAME=keycloak.swedemo.tk" # Set the hostname / FQDN
        - "KEYCLOAK_DEFAULT_THEME=sas-login-ui" # Here we make the SAS/STA theme default
