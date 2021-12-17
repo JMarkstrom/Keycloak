@@ -1,7 +1,7 @@
 # Deploying Keycloak with SSL in just 10 minutes!
 _These instructions provides detailed step-by-step instructions on setting up and running a **Keycloak Server** -complete with host-facing **SSL** AND without the need for a reverse proxy like nginx (!)._
 
-_In addition detailed step-by-step instructions are also provided for integrating the **SafeNet Keycloak Agent** with the Keycloak Server, including both the module and the SafeNet Trusted Access login theme. The goal of these instructions is to simplify configuration and reduce "time to market" when creating either a demo or test._
+_In addition detailed step-by-step instructions are also provided for integrating the **SafeNet Keycloak Agent** with the Keycloak Server, including both the module and the SafeNet Authentication Service login theme. The goal of these instructions is to simplify configuration and reduce "time to market" when creating either a demo or test._
 
 > :warning: **The instructions in this document must not be used towards setting up a production system!**
 
@@ -114,6 +114,12 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
         - AUTH_PROFILE=basicAuth
         - "KEYCLOAK_HOSTNAME=fqdn"
         - "KEYCLOAK_DEFAULT_THEME=sas-login-ui"
+
+### Verification
+To verify everything is working, open a browser and navigate to your keycloak host using `https://`:
+
+- The Keycloak main page displays without certificate errors ✔
+- Clicking on **Administration Console** Keycloak login displays with your set theme (optional) ✔
 
 ![image](https://user-images.githubusercontent.com/57787248/146521524-4f3862c1-96ea-4e27-b21c-aaa4bbc01bcd.png)
 
