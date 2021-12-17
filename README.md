@@ -95,23 +95,23 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
       container_name: keycloak
       restart: always
       ports:
-        - "80:8080" # Listen to HTTP on host port 80 and forward to keycloak on 8080
-        - "443:8443" # Listen to HTTPS on host port 443 and forward to keycloak on 443
+        - 80:8080
+        - 443:8443
      
       volumes:
-         - "./safenet/SafeNetOtpRealm.json:/tmp/safenet/SafeNetOtpRealm.json" # Mount the SafeNet agent config 
-        - "./safenet/sas-login-ui/:/opt/jboss/keycloak/themes/sas-login-ui/" #Mount the SAS/STA theme
-        - "./certs/fullchain.pem:/etc/x509/https/tls.crt"   # map certificate to container
-        - "./certs/privkey.pem:/etc/x509/https/tls.key"   # map private key to container
+         - ./safenet/SafeNetOtpRealm.json:/tmp/safenet/SafeNetOtpRealm.json
+        - ./safenet/sas-login-ui/:/opt/jboss/keycloak/themes/sas-login-ui/
+        - ./certs/fullchain.pem:/etc/x509/https/tls.crt"
+        - ./certs/privkey.pem:/etc/x509/https/tls.key
        
       environment:
-         - "KEYCLOAK_IMPORT:/tmp/SafeNetOtpRealm.json" # This is the SafeNet KeyCloak agent configuration from mounted volume
+        - KEYCLOAK_IMPORT:/tmp/SafeNetOtpRealm.json
         - JAVA_OPTS_APPEND="-D keycloak.profile.feature.upload_script=enabled"
         - KEYCLOAK_USER=admin
-        - "KEYCLOAK_PASSWORD=password" # Change the password buddy!
+        - KEYCLOAK_PASSWORD=password
         - AUTH_PROFILE=basicAuth
-        - "KEYCLOAK_HOSTNAME=fqdn" # Set the hostname / FQDN
-        - "KEYCLOAK_DEFAULT_THEME=sas-login-ui" # Here we make the SAS/STA theme default
+        - "KEYCLOAK_HOSTNAME=fqdn"
+        - "KEYCLOAK_DEFAULT_THEME=sas-login-ui"
 
 
 
