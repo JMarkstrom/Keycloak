@@ -1,5 +1,7 @@
 # Deploying Keycloak with SSL in just 10 minutes!
-_These instructions provides detailed step-by-step guidance on setting up the SafeNet Keycloak Agent with Keycloak server for use with SafeNet Authentication Service (SAS) and/or SafeNet Trusted Access (STA). The guide is intended to be used to simplify configuration and reduce "time to market" when creating either a demo or test._
+_These instructions provides detailed step-by-step instructions on setting up and running a **Keycloak Server** -complete with host-facing **SSL** AND without the need for a reverse proxy like nginx (!)._
+
+_In addition detailed step-by-step instructions are also provided for integrating the **SafeNet Keycloak Agent** with the Keycloak Server, including both the module and the SafeNet Trusted Access login theme. The goal of these instructions is to simplify configuration and reduce "time to market" when creating either a demo or test._
 
 > :warning: **The instructions in this document must not be used towards setting up a production system!**
 
