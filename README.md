@@ -110,7 +110,7 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
         - KEYCLOAK_USER=admin
         - "KEYCLOAK_PASSWORD=password" # Change the password buddy!
         - AUTH_PROFILE=basicAuth
-        - "KEYCLOAK_HOSTNAME=keycloak.swedemo.tk" # Set the hostname / FQDN
+        - "KEYCLOAK_HOSTNAME=fqdn" # Set the hostname / FQDN
         - "KEYCLOAK_DEFAULT_THEME=sas-login-ui" # Here we make the SAS/STA theme default
 
 
