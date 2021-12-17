@@ -115,8 +115,8 @@ Here (below as well as in the link) is an example **Docker Compose** file [file]
         - "KEYCLOAK_HOSTNAME=fqdn"
         - "KEYCLOAK_DEFAULT_THEME=sas-login-ui"
 
-### Verification
-To verify everything is working, open a browser and navigate to your keycloak host using `https://`:
+# Testing the solution
+To verify everything is working, open a browser and navigate to your keycloak host using `https://` e.g. `https://keycloak.swedemo.tk`
 
 - The Keycloak main page displays without certificate errors ✔
 - Clicking on **Administration Console** Keycloak login displays with your set theme (optional) ✔
