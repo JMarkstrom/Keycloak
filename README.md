@@ -5,6 +5,16 @@ _In addition detailed step-by-step instructions are also provided for integratin
 
 > :warning: **The instructions in this document must not be used towards setting up a production system!**
 
+### Table Of Contents
+  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
+  * [Certificate generation with Lets Encrypt](https://github.com/JMarkstrom/Keycloak#certificate-generation-with-letsencrypt)
+  * [Install & Configure Docker](https://github.com/JMarkstrom/Keycloak#install--configure-docker)
+  * 
+  * [Deploying the Keycloak Server](https://github.com/JMarkstrom/Keycloak#prerequisites)
+  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
+  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
+  * [Prerequisites](https://github.com/JMarkstrom/Keycloak#prerequisites)
+
 ## Prerequisites
 The following prerequisites must be met to successfully follow these instructions:
 
@@ -16,7 +26,7 @@ The following prerequisites must be met to successfully follow these instruction
     - (80) 
 
 
-## Certificate generation with Letsencrypt
+## Certificate generation with Lets Encrypt
 _On the target Keycloak Server host perform the following steps:_
 
 1. SSH to the Keycloak Server host
@@ -75,7 +85,7 @@ _As a final step to Docker installation/configuration we install Docker Compose_
 
 > 🥈 You now have a **working Docker setup**. Next we do the magics!
 
-## Deploying the Docker Server
+## Deploying the Keycloak Server
 
 Run Docker with Keycloak: `sudo docker-compose -f keycloak.yml up`
 
