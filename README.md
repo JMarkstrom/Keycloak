@@ -88,9 +88,9 @@ _As a final step to Docker installation/configuration we install Docker Compose_
 ## Keycloak server pre-configuration
 At this point certificates have been generated and Docker (all) have been installed and verified. Next, the certificate files and any additional configuration like the SafeNet theme or your own theme as well as any plugin/module needs to be moved or kept at path(s) where they can be consumed when running the solution.
 
-Here is an example file structure (as used in the provided Docker compose file shared with this repository).
+Here is an example file structure (as used in the provided Docker compose file shared with this repository) showing location of certificate (`fullchain.pem`), key (`privkey.pem`), a custom module (`SafeNetOtpRealm.json`) and a custom theme (`sas-login-ui`)
 
-> ⚠ The Lets Encrypt are _not_ converted to `.crt`!
+> :warning: **The Lets Encrypt are not to be renamed or converted to** `.crt`**!**
 
 ```
 ├── keycloak.yml
@@ -98,7 +98,7 @@ Here is an example file structure (as used in the provided Docker compose file s
 ├── certs
 │   └── fullchain.pem
 │   └── privkey.pem
-├── safeNet
+├── safenet
     ├── SafeNetOtpRealm.json
     └── sas-login-ui
         └── login
