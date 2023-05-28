@@ -17,8 +17,8 @@ services:
      environment:
        - JAVA_OPTS_APPEND="-D keycloak.profile.feature.upload_script=enabled"
        - KEYCLOAK_USER=admin # Change the username!
-       - "KEYCLOAK_PASSWORD=password" # Change the password!
+       - KEYCLOAK_PASSWORD=password # Change the password!
        - AUTH_PROFILE=basicAuth
-       - "KEYCLOAK_HOSTNAME=fqdn" # Set the hostname here
+       - KEYCLOAK_HOSTNAME=fqdn # Set the hostname here
     command:
        - start-dev # Start Keycloak in developer mode     
