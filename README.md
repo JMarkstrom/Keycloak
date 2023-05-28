@@ -1,1 +1,1 @@
-Refer to swjm.blog for instructions on usage!
+Refer to [swjm.blog](https://swjm.blog) for instructions on usage!
