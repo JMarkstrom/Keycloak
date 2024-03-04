@@ -16,8 +16,8 @@ services:
        
      environment:
        #- JAVA_OPTS_APPEND="-D keycloak.profile.feature.upload_script=enabled"
-       - KEYCLOAK_ADMIN_USER=admin # Change the username!
-       - KEYCLOAK_ADMIN_PASSWORD=password # Change the password!
+       - ADMIN_USER=admin # Change the username!
+       - ADMIN_PASSWORD=password # Change the password!
        - KC_HOSTNAME=fqdn # Set the hostname here
        - KC_HTTPS_CERTIFICATE_FILE=/etc/x509/https/tls.crt
        - KC_HTTPS_CERTIFICATE_KEY_FILE=/etc/x509/https/tls.key
